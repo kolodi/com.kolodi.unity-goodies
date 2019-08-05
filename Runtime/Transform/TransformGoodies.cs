@@ -31,4 +31,14 @@ public static class TransformGoodies
 
         return bounds;
     }
+
+    public static void DestroyAllChildren(this Transform root)
+    {
+        int childrentCount = root.childCount;
+        if (childrentCount < 1) return;
+        for (int i = childrentCount - 1; i >= 0; i--)
+        {
+            Object.Destroy(root.GetChild(i).gameObject);
+        }
+    }
 }

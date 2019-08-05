@@ -11,14 +11,17 @@ public class CameraOrbit : MonoBehaviour
 
     private Vector3 focalPoint = Vector3.zero;
 
+    private bool isOverUI = false;
     private bool clickedOverUI = false;
+
 
     private void Update()
     {
+        isOverUI = EventSystem.current.IsPointerOverGameObject();
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (isOverUI)
             {
                 clickedOverUI = true;
             }
@@ -36,7 +39,7 @@ public class CameraOrbit : MonoBehaviour
 
         if (Input.mouseScrollDelta.y != 0)
         {
-            if (EventSystem.current.IsPointerOverGameObject() == false)
+            if (isOverUI == false)
             {
                 var delta = Input.mouseScrollDelta.y;
                 var direction = transform.position - focalPoint;
