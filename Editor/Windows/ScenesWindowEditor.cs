@@ -27,7 +27,7 @@ public class ScenesWindowEditor : EditorWindow
         // EditorWindow.GetWindow() will return the open instance of the specified window or create a new
         // instance if it can't find one. The second parameter is a flag for creating the window as a
         // Utility window; Utility windows cannot be docked like the Scene and Game view windows.
-        var window = (SceneViewWindow)GetWindow(typeof(SceneViewWindow), false, "Scene View");
+        var window = (ScenesWindowEditor)GetWindow(typeof(ScenesWindowEditor), false, "Scene View");
         window.position = new Rect(window.position.xMin + 100f, window.position.yMin + 100f, 200f, 400f);
     }
 
