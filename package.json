@@ -1,6 +1,8 @@
 {
   "name": "com.kolodi.unity-goodies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Unity Goodies",
-  "description": "A set of useful Unity features and extensions."
+  "description": "A set of useful Unity features and extensions.",
+  "type": "library",
+  "hideInEditor": false
 }

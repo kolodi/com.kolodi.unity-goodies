@@ -35,6 +35,7 @@ public static class TransformGoodies
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
             ObjectHelper.SmartDestroy(transform.GetChild(i).gameObject);
+
         }
     }
 }
