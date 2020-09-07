@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public static class ObjectHelper
 {
@@ -37,15 +38,22 @@ public static class ObjectHelper
 #if UNITY_EDITOR
         if (Application.isPlaying)
         {
-            return Object.Instantiate<T>(prefab, parent);
+            return Object.Instantiate(prefab, parent);
         }
         else
         {
-            T o = UnityEditor.PrefabUtility.InstantiatePrefab(prefab) as T;
-            if (parent != null && o is GameObject)
+            var p = PrefabUtility.GetPrefabAssetType(prefab);
+
+            T o;
+            if (p == PrefabAssetType.NotAPrefab)
             {
-                GameObject go = o as GameObject;
-                go.transform.SetParent(parent);
+                o = Object.Instantiate(prefab, parent);
+            }
+            else
+            {
+                var originalPrefab = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(prefab);
+                var asset = AssetDatabase.LoadAssetAtPath<T>(originalPrefab);
+                o = PrefabUtility.InstantiatePrefab(asset, parent) as T;
             }
             return o;
         }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class TransformGoodies
 {
@@ -30,5 +28,13 @@ public static class TransformGoodies
         }
 
         return bounds;
+    }
+
+    public static void DestroyAllChildren(Transform transform)
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            ObjectHelper.SmartDestroy(transform.GetChild(i).gameObject);
+        }
     }
 }
