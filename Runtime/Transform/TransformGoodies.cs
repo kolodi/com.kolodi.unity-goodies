@@ -30,7 +30,7 @@ public static class TransformGoodies
         return bounds;
     }
 
-    public static void DestroyAllChildren(Transform transform)
+    public static void DestroyAllChildren(this Transform transform)
     {
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
