@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Kolodi.CameraGoodies
+namespace UnityGoodies
 {
 
     public class GodCamera : MonoBehaviour
